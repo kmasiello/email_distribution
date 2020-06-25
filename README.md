@@ -1,6 +1,6 @@
 # email_distribution
 Step 1 - import / create your distribution list and pin it to Connect. (pin_dist_list.rmd)  
-Step 2 - create your email and use `blastula::smtp_send()` to send your email (send_email.rmd). 
+Step 2 - create your email and use `blastula::smtp_send()` to send your email (send_email.rmd).   
 Step 3 - publish send_email.rmd to Connect and schedule the output. 
 
 Things to be aware of:
