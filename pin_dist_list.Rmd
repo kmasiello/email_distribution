@@ -1,0 +1,32 @@
+---
+title: Pin Distribution List
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+* Create an email distribution list of recipients
+* pin the distribution list to Connect
+* use a scheduled ETL process and blastula to email the distribution list
+
+# Create the email distribution list
+This can be from any source.  For now, I'll manually put this in. 
+```{r}
+distribution <- data.frame(Name = c("Katie", "Elena", "Josiah", "Colin", "Brian", "Nichole", "Ryan", "Shannon"), Email = c("katie.masiello@rstudio.com", "elena@rstudio.com", "josiah@rstudio.com", "colin@rstudio.com", "brian.law@rstudio.com", "nichole@rstudio.com", "ryan@rstudio.com", "shannon@rstudio.com"))
+
+distribution
+```
+# Pin it
+
+```{r}
+library(pins)
+board_register(
+    "rsconnect", 
+    server = Sys.getenv("CONNECT_SERVER"), 
+    key = Sys.getenv("CONNECT_API_KEY"))
+
+pin(distribution, board = "rsconnect")
+```
+

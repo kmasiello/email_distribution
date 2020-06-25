@@ -1,0 +1,58 @@
+---
+title: "Send emails to distribution list"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Bring in email distribution list
+```{r}
+library(pins)
+board_register("rsconnect",
+         key = Sys.getenv("CONNECT_API_KEY"),
+         server = Sys.getenv("CONNECT_SERVER")
+         )
+
+dist_list <- pin_get("katie/distribution", board = "rsconnect")
+```
+
+# Compose the email
+```{r}
+library(blastula)
+message <- compose_email(
+  body = 
+    paste("Good morning, sunshine!", praise::praise())
+)
+```
+
+# Send the email  
+
+My email provider is gmail-based, so I followed the instructions from https://rich-iannone.github.io/blastula/articles/sending_using_smtp.html
+Since I am publishing to Connect and don't want my email credentials being shared, I will pass those as an environment variable using the `pass_envvar` argument in `smtp_send`. See https://github.com/rich-iannone/blastula/issues/149 and PR https://github.com/rich-iannone/blastula/pull/159
+
+```{r}
+# Sending email to a personal account
+# through manual specification of SMTP
+# credentials
+message %>%
+  smtp_send(
+    from = "katie.masiello@rstudio.com",
+    to = dist_list$Email, #This will put everyone in the to line
+    subject = "Good Morning",
+    credentials = creds_envvar(
+  user = Sys.getenv("SMTP_USER"),
+  pass_envvar = "SMTP_PASSWORD",
+  provider = "gmail"
+)
+  )
+```
+
+
+# Log it
+Very simplistic log of email date and who got it:
+```{r}
+list(Sys.time(), dist_list$Email)
+```
+
