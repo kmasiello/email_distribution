@@ -1,0 +1,12 @@
+name: send_email2
+title: send_email
+username: katie
+account: katie
+server: colorado.rstudio.com
+hostUrl: https://colorado.rstudio.com/rsc/__api__
+appId: 6845
+bundleId: 38819
+url: https://colorado.rstudio.com/rsc/content/6845/
+when: 1593059428.19818
+asMultiple: FALSE
+asStatic: FALSE

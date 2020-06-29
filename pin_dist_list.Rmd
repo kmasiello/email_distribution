@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Create the email distribution list
 This can be from any source.  For now, I'll manually put this in. 
 ```{r}
-distribution <- data.frame(Name = c("Katie", "Elena", "Josiah", "Colin", "Brian", "Nichole", "Ryan", "Shannon"), Email = c("katie.masiello@rstudio.com", "elena@rstudio.com", "josiah@rstudio.com", "colin@rstudio.com", "brian.law@rstudio.com", "nichole@rstudio.com", "ryan@rstudio.com", "shannon@rstudio.com"))
+distribution <- data.frame(Name = c("Katie", "Elena", "Josiah", "Colin", "Brian", "Nichole", "Ryan", "Shannon", "Cole", "Tonya"), Email = c("katie.masiello@rstudio.com", "elena@rstudio.com", "josiah@rstudio.com", "colin@rstudio.com", "brian.law@rstudio.com", "nichole@rstudio.com", "ryan@rstudio.com", "shannon@rstudio.com", "cole@rstudio.com", "tonya@rstudio.com"))
 
 distribution
 ```
